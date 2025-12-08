@@ -1,16 +1,44 @@
-# React + Vite
+# Zaurez Alam Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This project showcases my skills, projects, and experiences as a developer.
 
-Currently, two official plugins are available:
+## 🌐 About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This portfolio website is built with **React** and **Tailwind CSS**. It highlights my projects, education, and contact information in a sleek, modern design.  
 
-## React Compiler
+Key features include:  
+- Responsive design for desktop and mobile.  
+- Project showcase with images, descriptions, and links.  
+- Education and skills section.  
+- Contact form for easy communication.  
+- Dark mode support for a better user experience.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Technologies Used
 
-## Expanding the ESLint configuration
+- **React** – Frontend framework  
+- **Tailwind CSS** – Utility-first CSS for styling  
+- **JavaScript (ES6+)** – Programming language  
+- **Vite / Create React App** – Project setup and bundling  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Optional integrations:  
+- **GitHub Pages / Vercel / Netlify** for deployment  
+
+## 🖼 Project Showcase
+
+- **Vehicle Smoke Detection System**: Detects smoke-emitting vehicles, captures number plates, and logs them in real-time.  
+- **Other projects**: (Add more projects here with 1–2 line descriptions)  
+
+## ⚡ Features
+
+- Modern UI with grid layout for projects  
+- Interactive buttons and navigation  
+- Light and dark theme support  
+- Mobile-friendly responsive design  
+
+## 📂 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/portfolio-website.git
+cd portfolio-website
