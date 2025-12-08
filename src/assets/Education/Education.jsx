@@ -30,7 +30,7 @@ function education(){
   
   {/* Contact Icons and Info */}
   <div className="flex items-center gap-4 text-lg">
-    <a href="mailto:a@gmail.com" className="hover:text-orange-500 transition-colors">
+    <a href="mailto:zaurezalam@gmail.com" className="hover:text-orange-500 transition-colors">
       <EmailIcon />|
     </a>
     <span>| zaurezalam@gmail.com</span>
@@ -53,7 +53,7 @@ function education(){
       <GitHubIcon />
     </a>
     
-    <a href="tel:090078601" className="hover:text-orange-500 transition-colors">
+    <a href="tel:+923358273980" className="hover:text-orange-500 transition-colors">
       <PhoneIcon />|
     </a>
     <span>| +923358273980</span>
