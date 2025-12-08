@@ -17,7 +17,7 @@ export const Navbar = () => {
     {/* Group container: text + icons */}
     <div className="flex items-center gap-18">
       {/* Text */}
-      <a href='#'><Typography
+      <a href='https://zaurezportfolio.vercel.app/'><Typography
         variant="h5"
         className="text-white font-bold hover:text-orange-500"
       >
