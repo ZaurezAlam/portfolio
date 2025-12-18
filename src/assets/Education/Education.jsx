@@ -28,12 +28,17 @@ function education(){
     <h1 className="text-2xl font-bold">PORTFOLIO</h1>
   </div>
   
+  <div className="text-sm text-gray-300 font-bold text-md">
+    <p>Socials And Contacts</p>
+  </div>
   {/* Contact Icons and Info */}
   <div className="flex items-center gap-4 text-lg">
+    
     <a href="mailto:zaurezalam@gmail.com" className="hover:text-orange-500 transition-colors">
-      <EmailIcon />|
+      <EmailIcon />
     </a>
-    <span>| zaurezalam@gmail.com</span>
+    |
+    <span>zaurezalam@gmail.com</span>
     
     <a 
       href='https://www.linkedin.com/in/zaurez-alam-khan-0ab9bb32a' 
@@ -54,9 +59,10 @@ function education(){
     </a>
     
     <a href="tel:+923358273980" className="hover:text-orange-500 transition-colors">
-      <PhoneIcon />|
+      <PhoneIcon />
     </a>
-    <span>| +923358273980</span>
+    |
+    <span>+923358273980</span>
   </div>
   
   {/* Made By */}

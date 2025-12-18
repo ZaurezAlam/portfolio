@@ -8,7 +8,7 @@ export const Hero = () => {
       {/* Text */}
       <div className="pr-40">
   <h2 className="text-orange-500 font-serif font-bold text-xl mb-4">
-    About Me
+    ABOUT ME
   </h2>
 
   <p className="mb-6 leading-relaxed mr-12">
