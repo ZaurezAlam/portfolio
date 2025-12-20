@@ -27,13 +27,30 @@ export const Navbar = () => {
       </Typography></a>
 
       {/* Icons close together */}
-      <div className="flex items-center gap-3">
-        <a href='https://www.linkedin.com/in/zaurez-alam-khan-0ab9bb32a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0nbT9lOyQ06K1RI5UB9aVg%3D%3D'><LinkedInIcon className="text-white hover:text-orange-500" /></a>
-        <a href='https://github.com/ZaurezAlam'><GitHubIcon className="text-white hover:text-orange-500" /></a>
-       
-
-        
-      </div>
+     <div className="flex items-center gap-4 md:gap-5">
+  <a 
+    href='https://www.linkedin.com/in/zaurez-alam-khan-0ab9bb32a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0nbT9lOyQ06K1RI5UB9aVg%3D%3D'
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn Profile"
+  >
+    <LinkedInIcon 
+      className="text-white hover:text-orange-500 transition-colors" 
+      sx={{ fontSize: { xs: 32, sm: 36, md: 40 } }}
+    />
+  </a>
+  <a 
+    href='https://github.com/ZaurezAlam'
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub Profile"
+  >
+    <GitHubIcon 
+      className="text-white hover:text-orange-500 transition-colors" 
+      sx={{ fontSize: { xs: 32, sm: 36, md: 40 } }}
+    />
+  </a>
+</div>
     </div>
   </Toolbar>
 </AppBar>
