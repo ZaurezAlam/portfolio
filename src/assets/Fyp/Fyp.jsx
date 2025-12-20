@@ -1,5 +1,6 @@
 import { useState } from "react";
 import fypimg from '../../assets/images/fyp.png';
+
 export default function Projects() {
   const [openModal, setOpenModal] = useState(null);
 
@@ -15,7 +16,7 @@ export default function Projects() {
     {
       id: 2,
       title: "PortFolio",
-      description: "A modern React portfolio showcasing my skills, projects, and experience Designed with clean UI, responsive layout, and smooth user experience.",
+      description: "A modern React portfolio showcasing my skills, projects, and experience. Designed with clean UI, responsive layout, and smooth user experience.",
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/ZaurezAlam/portfolio",
       category: "other"
@@ -23,7 +24,7 @@ export default function Projects() {
     {
       id: 3,
       title: "Movie App",
-      description: "A simple React + Vite application that displays Top Movies of the Year using a Movie API Users can view movie details, browse trending titles, and add movies to their Favorites list.",
+      description: "A simple React + Vite application that displays Top Movies of the Year using a Movie API. Users can view movie details, browse trending titles, and add movies to their Favorites list.",
       image: "https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/ZaurezAlam/React_Movie_Project",
       category: "other"
@@ -51,36 +52,45 @@ export default function Projects() {
 
   return (
     <>
-      {/* FYP Section */}
-      <div className="flex justify-center items-center font-black text-2xl text-white font-serif p-16">
-        FYP (Final Year Project)
+      {/* FYP Section Heading */}
+      <div className="flex justify-center items-center px-4 py-8 sm:py-12 lg:py-16">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-serif text-center">
+          FYP (Final Year Project)
+        </h2>
       </div>
 
-      {/* FYP Card - Rectangle */}
-      <div className="flex justify-center items-center px-8 mb-16">
-        <div className="max-w-4xl w-full bg-deep-blue text-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-4 border-orange-500 transform transition duration-300 hover:scale-105">
+      {/* FYP Card */}
+      <div className="flex justify-center items-center px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
+        <div className="max-w-4xl w-full bg-deep-blue text-white rounded-lg shadow-lg overflow-hidden flex flex-col lg:flex-row border-4 border-orange-500 transition-transform duration-300 lg:hover:scale-105">
           
-          {/* Project Image */}
-          <div className="md:w-1/2 cursor-pointer overflow-hidden" onClick={() => setOpenModal(fypProject.id)}>
+          {/* Image */}
+          <div
+            className="w-full lg:w-1/2 cursor-pointer overflow-hidden"
+            onClick={() => setOpenModal(fypProject.id)}
+          >
             <img
-              className="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110"
+              className="w-full h-56 sm:h-64 lg:h-full object-cover transition-transform duration-500 lg:hover:scale-110"
               src={fypProject.image}
               alt="FYP Screenshot"
             />
           </div>
 
-          {/* Project Content */}
-          <div className="md:w-1/2 p-6 flex flex-col justify-center ml-10">
-            <h2 className="text-3xl font-bold mb-4">{fypProject.title}</h2>
-            <p className="text-sm mb-6">{fypProject.description}</p>
+          {/* Content */}
+          <div className="w-full lg:w-1/2 p-5 sm:p-6 lg:p-8 flex flex-col justify-center text-center lg:text-left">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4">
+              {fypProject.title}
+            </h3>
 
-            {/* GitHub Button */}
-            <div className="flex gap-4">
+            <p className="text-sm sm:text-base lg:text-lg mb-5 sm:mb-6 leading-relaxed">
+              {fypProject.description}
+            </p>
+
+            <div className="flex justify-center lg:justify-start">
               <a
                 href={fypProject.github}
                 target="_blank"
                 rel="noopener noreferrer"
-               className="inline-block bg-orange-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition"
+                className="inline-flex items-center justify-center bg-orange-500 text-white font-semibold px-6 py-3 min-h-[44px] rounded-lg hover:bg-orange-600 transition-colors"
               >
                 GitHub
               </a>
@@ -89,44 +99,51 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Other Projects Section */}
-      <div className="flex justify-center items-center font-black text-2xl text-white font-serif p-16">
-        Other Projects
+      {/* Other Projects Section Heading */}
+      <div className="flex justify-center items-center px-4 py-8 sm:py-12 lg:py-16">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-serif text-center">
+          Other Projects
+        </h2>
       </div>
 
-      {/* Other Projects Grid - 2x2 Squares */}
-      <div className="flex justify-center items-center px-8 pb-16">
-        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-          {otherProjects.map((project) => (
+      {/* Other Projects Grid */}
+      <div className="flex justify-center items-center px-4 sm:px-6 pb-12 sm:pb-16">
+        <div className="max-w-4xl w-full grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          {otherProjects.map(project => (
             <div
               key={project.id}
-              className="bg-deep-blue text-white rounded-lg shadow-lg overflow-hidden border-4 border-orange-500 transform transition duration-300 hover:scale-105"
+              className="bg-deep-blue text-white rounded-lg shadow-lg overflow-hidden border-4 border-orange-500 transition-transform duration-300 sm:hover:scale-105"
             >
-              {/* Project Image */}
-              <div className="cursor-pointer overflow-hidden aspect-square" onClick={() => setOpenModal(project.id)}>
+              {/* Image */}
+              <div
+                className="cursor-pointer overflow-hidden aspect-[4/3]"
+                onClick={() => setOpenModal(project.id)}
+              >
                 <img
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 sm:hover:scale-110"
                   src={project.image}
                   alt={`${project.title} Screenshot`}
                 />
               </div>
 
-              {/* Project Content */}
-              <div className="p-6">
-                <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
-                <p className="text-sm mb-4">{project.description}</p>
+              {/* Content */}
+              <div className="p-5 sm:p-6">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-3">
+                  {project.title}
+                </h3>
 
-                {/* GitHub Button */}
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-orange-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition"
-                  >
-                    GitHub
-                  </a>
-                </div>
+                <p className="text-sm sm:text-base mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-orange-500 text-white font-semibold px-6 py-3 min-h-[44px] rounded-lg hover:bg-orange-600 transition-colors"
+                >
+                  GitHub
+                </a>
               </div>
             </div>
           ))}
@@ -136,11 +153,11 @@ export default function Projects() {
       {/* Fullscreen Modal */}
       {openModal && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 p-4"
           onClick={() => setOpenModal(null)}
         >
           <img
-            className="max-h-full max-w-full object-contain"
+            className="max-h-full max-w-full object-contain rounded-lg"
             src={projects.find(p => p.id === openModal).image}
             alt="Project Screenshot Fullscreen"
           />
