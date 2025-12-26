@@ -47,11 +47,6 @@ export const Navbar = () => {
       link: "mailto:your.zaurezalam@gmail.com", // Replace with your email
       icon: <EmailIcon />
     },
-    { 
-      text: "Download CV", 
-      link: "/Zaurez_Alam_Khan_CV.pdf", // Replace with your email
-      icon: <EmailIcon />
-    }
   ];
 
   return (

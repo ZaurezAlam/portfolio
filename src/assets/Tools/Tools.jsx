@@ -14,9 +14,12 @@ function tools(){
   return (
     <>
     {/* Heading Section */}
-    <div className="flex justify-center items-center font-black text-2xl text-white font-serif p-16">
-        <h1>Languages and Frameworks</h1>
-    </div>
+    <div className="flex justify-center items-center px-4 py-8 sm:py-12 lg:py-16">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-serif text-center">
+          Languages and Frameworks
+        </h2>
+      </div>
+
     
     {/* Logos Section - Using flex-wrap for responsive rows */}
     <div className="flex justify-center items-center flex-wrap gap-8 max-w-4xl mx-auto">
