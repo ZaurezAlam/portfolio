@@ -11,7 +11,7 @@ function education(){
         <>
         <div className="flex justify-center items-center px-4 py-8 sm:py-12 lg:py-16">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-serif text-center">
-          Education and
+          Education and Certification
         </h2>
       </div>
       <div className="flex justify-center items-center gap-8 mb-8">
