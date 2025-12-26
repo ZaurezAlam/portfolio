@@ -5,3 +5,7 @@
 body{
     @apply bg-deep-blue 
 }
+html, body {
+  overflow-x: hidden;
+  
+}

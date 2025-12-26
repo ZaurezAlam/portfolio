@@ -46,6 +46,11 @@ export const Navbar = () => {
       text: "Email", 
       link: "mailto:your.zaurezalam@gmail.com", // Replace with your email
       icon: <EmailIcon />
+    },
+    { 
+      text: "Download CV", 
+      link: "/Zaurez_Alam_Khan_CV.pdf", // Replace with your email
+      icon: <EmailIcon />
     }
   ];
 
@@ -112,6 +117,14 @@ export const Navbar = () => {
                   sx={{ fontSize: 40 }}
                 />
               </a>
+              <a
+  href="/Zaurez_Alam_Khan_CV.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-orange-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors"
+>
+  View CV
+</a>
             </div>
           )}
 
@@ -165,6 +178,14 @@ export const Navbar = () => {
               </ListItem>
             ))}
           </List>
+          <a
+  href="/Zaurez_Alam_Khan_CV.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className=" flex justify-center  bg-orange-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors w-40 mx-12"
+>
+  View CV
+</a>
         </Box>
       </Drawer>
     </>
