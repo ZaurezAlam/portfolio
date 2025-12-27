@@ -95,7 +95,7 @@ export const Navbar = () => {
                 />
               </a>
               <a 
-                href='tel:+1234567890' // Replace with your phone number
+                href='tel:+923358273980' // Replace with your phone number
                 aria-label="Phone"
               >
                 <PhoneIcon 
@@ -104,7 +104,7 @@ export const Navbar = () => {
                 />
               </a>
               <a 
-                href='mailto:your.email@example.com' // Replace with your email
+                href='mailto:zaurezalam@example.com' // Replace with your email
                 aria-label="Email"
               >
                 <EmailIcon 
