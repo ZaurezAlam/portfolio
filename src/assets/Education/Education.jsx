@@ -1,85 +1,193 @@
 import React from 'react';
-import dsu from '../../assets/Logos/dsu.png';
+import { motion } from 'framer-motion';
+import dsu    from '../../assets/Logos/dsu.png';
 import aptech from '../../assets/Logos/aptech.png';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon   from '@mui/icons-material/GitHub';
+import PhoneIcon    from '@mui/icons-material/Phone';
+import EmailIcon    from '@mui/icons-material/Email';
+import './Education.css';
 
-function education(){
-    return(
-        <>
-        <div className="flex justify-center items-center px-4 py-8 sm:py-12 lg:py-16">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-serif text-center">
-          Education and Certification
-        </h2>
-      </div>
-      <div className="flex justify-center items-center gap-8 mb-8">
-      <div className="flex justify-center w-28"><img className="h-28 w-28" src={dsu}></img></div>
-      <div className="text-white w-64 font-black font-serif">DHA SUFFA UNIVERSITY<br/>Bachelor of Science in Software Engineering</div>
-      <div className="text-white w-24 font-black font-serif">2021-2025</div>
-      </div>
-      <div className="flex justify-center items-center gap-8">
-      <div className="flex justify-center w-28 font-serif font-black"><img className="h-14 w-40" src={aptech}></img></div>
-      <div className="text-white w-64 font-serif font-black">Aptech(Web Development)</div>
-      <div className="text-white w-24 font-serif font-black"></div>
-    </div>
-    <footer className="flex flex-col items-center text-white font-serif py-6 mt-40 gap-4">
-  {/* Portfolio Title */}
-  <div>
-    <h1 className="text-2xl font-bold">PORTFOLIO</h1>
-  </div>
-  
-  <div className="text-sm text-gray-300 font-bold text-md">
-    <p>Socials And Contacts</p>
-  </div>
-  {/* Contact Icons and Info */}
-  <div className="flex flex-col sm:flex-row flex-wrap items-center gap-2 text-sm sm:text-base md:text-lg">
-  <div className="flex items-center gap-1">
-    <a href="mailto:zaurezalam@gmail.com" className="hover:text-orange-500 transition-colors">
-      <EmailIcon fontSize="small" />
-    </a>
-    <span className="break-words">zaurezalam@gmail.com</span>
-  </div>
+// ─── Data ─────────────────────────────────────────────────────────────────────
+const EDUCATION = [
+  {
+    logo:   dsu,
+    logoAlt:'DHA Suffa University',
+    school: 'DHA Suffa University',
+    degree: 'Bachelor of Science in Software Engineering',
+    period: '2021 – 2025',
+    type:   'degree',
+  },
+  {
+    logo:   aptech,
+    logoAlt:'Aptech',
+    school: 'Aptech',
+    degree: 'Web Development Certification',
+    period: '2023',
+    type:   'cert',
+  },
+];
 
-  <span className="hidden sm:inline">|</span>
+const SOCIALS = [
+  {
+    icon:  <EmailIcon sx={{ fontSize: 18 }} />,
+    href:  'mailto:zaurezalam@gmail.com',
+    label: 'zaurezalam@gmail.com',
+  },
+  {
+    icon:  <PhoneIcon sx={{ fontSize: 18 }} />,
+    href:  'tel:+923358273980',
+    label: '+92 335 827 3980',
+  },
+  {
+    icon:  <LinkedInIcon sx={{ fontSize: 18 }} />,
+    href:  'https://www.linkedin.com/in/zaurez-alam-khan-0ab9bb32a',
+    label: 'LinkedIn',
+    external: true,
+  },
+  {
+    icon:  <GitHubIcon sx={{ fontSize: 18 }} />,
+    href:  'https://github.com/ZaurezAlam',
+    label: 'GitHub',
+    external: true,
+  },
+];
 
-  <a
-    href='https://www.linkedin.com/in/zaurez-alam-khan-0ab9bb32a'
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-orange-500 transition-colors"
-  >
-    <LinkedInIcon fontSize="small" />
-  </a>
+// ─── Animation variants ───────────────────────────────────────────────────────
+const cardVariants = {
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
 
-  <a
-    href='https://github.com/ZaurezAlam'
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-orange-500 transition-colors"
-  >
-    <GitHubIcon fontSize="small" />
-  </a>
+// ─── Component ────────────────────────────────────────────────────────────────
+export default function Education() {
+  return (
+    <>
+      {/* ══ Education Section ══════════════════════════════════════════════════ */}
+      <section className="edu-section" id="education">
+        <div className="edu-glow" aria-hidden="true" />
 
-  <div className="flex items-center gap-1">
-    <a href="tel:+923358273980" className="hover:text-orange-500 transition-colors">
-      <PhoneIcon fontSize="small" />
-    </a>
-    <span className="break-words">+923358273980</span>
-  </div>
-</div>
+        {/* Heading */}
+        <motion.div
+          className="edu-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="edu-eyebrow">Background</span>
+          <h2 className="edu-title">Education &amp; Certification</h2>
+        </motion.div>
 
-  
-  {/* Made By */}
-  <div className="text-sm text-gray-300">
-    <p>Made and Designed by Zaurez</p>
-  </div>
-</footer>
+        {/* Cards */}
+        <div className="edu-list">
+          {EDUCATION.map((item, i) => (
+            <motion.div
+              key={item.school}
+              className="edu-card"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ delay: i * 0.12 }}
+            >
+              {/* Logo */}
+              <div className="edu-logo-wrap">
+                <img
+                  src={item.logo}
+                  alt={item.logoAlt}
+                  className="edu-logo"
+                />
+              </div>
+
+              {/* Connector line (hidden on last item) */}
+              {i < EDUCATION.length - 1 && (
+                <div className="edu-connector" aria-hidden="true" />
+              )}
+
+              {/* Content */}
+              <div className="edu-card__body">
+                <div className="edu-card__top">
+                  <div>
+                    <span className={`edu-badge ${item.type === 'cert' ? 'edu-badge--cert' : ''}`}>
+                      {item.type === 'cert' ? 'Certificate' : 'Degree'}
+                    </span>
+                    <h3 className="edu-school">{item.school}</h3>
+                    <p className="edu-degree">{item.degree}</p>
+                  </div>
+                  {item.period && (
+                    <span className="edu-period">{item.period}</span>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ Footer ═════════════════════════════════════════════════════════════ */}
+      <footer className="site-footer">
+        {/* Top divider */}
+        <div className="footer-divider" aria-hidden="true" />
+
+        <div className="footer-inner">
+          {/* Brand */}
+          <motion.div
+            className="footer-brand"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="footer-name">Zaurez Alam</span>
+            <span className="footer-role">FrontEnd/CMS Developer</span>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div
+            className="footer-socials"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="footer-socials__label">Socials &amp; Contact</p>
+            <div className="footer-links">
+              {SOCIALS.map(({ icon, href, label, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="footer-link"
+                  {...(external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                  aria-label={label}
+                >
+                  <span className="footer-link__icon">{icon}</span>
+                  <span className="footer-link__label">{label}</span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Bottom bar */}
+          <motion.div
+            className="footer-bottom"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.18 }}
+          >
+            <span className="footer-copy">
+              © {new Date().getFullYear()} Zaurez Alam. All rights reserved.
+            </span>
+            <span className="footer-made">
+              Designed &amp; built by Zaurez
+            </span>
+          </motion.div>
+        </div>
+      </footer>
     </>
-    
-    
-    )
-
+  );
 }
-export default education

@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ─── Variables (mirrors Hero/Navbar palette) ───────────────────────────────── */
+:root {
+  --orange:       #f97316;
+  --orange-dark:  #c2410c;
+  --bg:           #070b12;
+  --surface:      rgba(255, 255, 255, 0.04);
+  --surface-hover:rgba(255, 255, 255, 0.07);
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-orange:rgba(249, 115, 22, 0.35);
+  --text-primary: #f1f5f9;
+  --text-muted:   #94a3b8;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --radius:       14px;
+}
+
+/* ─── Section ───────────────────────────────────────────────────────────────── */
+.projects-section {
+  position: relative;
+  background: var(--bg);
+  padding: 5rem 1.25rem 6rem;
+  overflow: hidden;
+}
+
+.projects-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+  filter: blur(100px);
+  top: 10%;
+  right: -15%;
+  pointer-events: none;
+}
+
+/* ─── Section heading ───────────────────────────────────────────────────────── */
+.projects-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.projects-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.projects-eyebrow::before,
+.projects-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--orange);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.projects-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ─── FYP card ──────────────────────────────────────────────────────────────── */
+.fyp-wrapper {
+  max-width: 860px;
+  margin: 0 auto 5rem;
+  padding: 0 0.25rem;
+}
+
+.fyp-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border-orange);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(249,115,22,0.05),
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 40px rgba(249,115,22,0.06);
+  transition: box-shadow 0.3s ease;
+}
+.fyp-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(249,115,22,0.12),
+    0 24px 70px rgba(0,0,0,0.6),
+    0 0 60px rgba(249,115,22,0.1);
+}
+
+@media (min-width: 768px) {
+  .fyp-card {
+    flex-direction: row;
+  }
+}
+
+/* Image side */
+.fyp-image-btn {
+  all: unset;
+  position: relative;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .fyp-image-btn {
+    width: 48%;
+  }
+}
+
+.fyp-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s var(--ease-out);
+}
+@media (min-width: 768px) {
+  .fyp-image { height: 100%; min-height: 300px; }
+}
+.fyp-card:hover .fyp-image {
+  transform: scale(1.05);
+}
+
+.fyp-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,11,18,0.6), transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.fyp-image-btn:hover .fyp-image-overlay {
+  opacity: 1;
+}
+.fyp-zoom-hint {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
+}
+
+/* Content side */
+.fyp-content {
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .fyp-content { padding: 2.5rem 2rem; }
+}
+
+.fyp-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.25);
+  border-radius: 100px;
+  padding: 3px 10px;
+  width: fit-content;
+}
+
+.fyp-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.fyp-description {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ─── Tech pills ────────────────────────────────────────────────────────────── */
+.fyp-pills,
+.project-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-pill {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tech-pill:hover {
+  color: var(--orange);
+  border-color: rgba(249,115,22,0.3);
+}
+
+/* ─── GitHub button ─────────────────────────────────────────────────────────── */
+.btn-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  padding: 10px 20px;
+  border-radius: 8px;
+  width: fit-content;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.35);
+  transition: transform 0.22s var(--ease-out), box-shadow 0.22s ease;
+}
+.btn-github:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 26px rgba(249,115,22,0.5);
+}
+.btn-github:active {
+  transform: scale(0.97);
+}
+
+.btn-github--sm {
+  font-size: 0.75rem;
+  padding: 8px 16px;
+}
+
+/* ─── Other projects grid ───────────────────────────────────────────────────── */
+.grid-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+@media (min-width: 560px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ─── Project card ──────────────────────────────────────────────────────────── */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  border-color: var(--border-orange);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 30px rgba(249,115,22,0.07);
+}
+
+.project-image-btn {
+  all: unset;
+  display: block;
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,11,18,0.5) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.project-image-btn:hover .project-image-overlay {
+  opacity: 1;
+}
+
+.project-content {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.project-description {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+  flex: 1;
+}
+
+/* ─── Modal ─────────────────────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.25rem;
+}
+
+.modal-inner {
+  position: relative;
+  max-width: min(92vw, 900px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.07);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(7,11,18,0.85);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.modal-close:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-height: calc(90vh - 48px);
+  object-fit: contain;
+  display: block;
+}
+
+.modal-caption {
+  background: rgba(7,11,18,0.9);
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+}
+.modal-caption-title {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fyp-image,
+  .project-image {
+    transition: none;
+  }
+}
+
+/* Container for buttons to sit side-by-side */
+.project-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Pushes buttons to the bottom of the card */
+}
+
+/* Live Demo Button Styling */
+.btn-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.25s var(--ease-out);
+  width:120px;
+}
+
+.btn-live:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* Specific sizing for the grid cards */
+.btn-live--sm {
+  font-size: 0.7rem;
+  padding: 7px 12px;
+}
+

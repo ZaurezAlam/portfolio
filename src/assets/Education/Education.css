@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ─── Variables ─────────────────────────────────────────────────────────────── */
+:root {
+  --orange:        #f97316;
+  --orange-dark:   #c2410c;
+  --bg:            #070b12;
+  --surface:       rgba(255, 255, 255, 0.04);
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-orange: rgba(249, 115, 22, 0.3);
+  --text-primary:  #f1f5f9;
+  --text-muted:    #94a3b8;
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --radius:        14px;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   EDUCATION SECTION
+   ════════════════════════════════════════════════════════════════════════════ */
+.edu-section {
+  position: relative;
+  background: var(--bg);
+  padding: 5rem 1.25rem 6rem;
+  overflow: hidden;
+}
+
+.edu-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.07) 0%, transparent 70%);
+  filter: blur(100px);
+  top: 5%;
+  right: -12%;
+  pointer-events: none;
+}
+
+/* ─── Heading ───────────────────────────────────────────────────────────────── */
+.edu-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.edu-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.edu-eyebrow::before,
+.edu-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--orange);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.edu-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ─── Timeline list ─────────────────────────────────────────────────────────── */
+.edu-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* gap controlled by connector */
+  position: relative;
+}
+
+/* ─── Card ──────────────────────────────────────────────────────────────────── */
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+/* vertical connector between cards */
+.edu-connector {
+  position: absolute;
+  left: 31px;               /* centre of the 64px logo wrap */
+  top: 68px;                /* below the logo */
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--border-orange), transparent);
+}
+
+/* ─── Logo ──────────────────────────────────────────────────────────────────── */
+.edu-logo-wrap {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.edu-card:hover .edu-logo-wrap {
+  border-color: var(--border-orange);
+  box-shadow: 0 4px 20px rgba(249,115,22,0.12);
+}
+
+.edu-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+/* ─── Card body ─────────────────────────────────────────────────────────────── */
+.edu-card__body {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.edu-card:hover .edu-card__body {
+  border-color: var(--border-orange);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3), 0 0 20px rgba(249,115,22,0.06);
+}
+
+.edu-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Badge */
+.edu-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.22);
+  border-radius: 100px;
+  padding: 2px 9px;
+  margin-bottom: 0.5rem;
+}
+.edu-badge--cert {
+  color: #38bdf8;
+  background: rgba(56,189,248,0.08);
+  border-color: rgba(56,189,248,0.22);
+}
+
+.edu-school {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.edu-degree {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.edu-period {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--orange);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--bg);
+  position: relative;
+}
+
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(249,115,22,0.25) 30%,
+    rgba(249,115,22,0.25) 70%,
+    transparent 100%
+  );
+  margin: 0 1.25rem;
+}
+
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Brand */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: linear-gradient(90deg, #f1f5f9 30%, var(--orange) 60%, #f1f5f9 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-role {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(249,115,22,0.65);
+}
+
+/* Socials */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.footer-socials__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  transition: color 0.2s ease, border-color 0.2s ease,
+              background 0.2s ease, transform 0.2s ease;
+}
+.footer-link:hover {
+  color: var(--orange);
+  border-color: var(--border-orange);
+  background: rgba(249,115,22,0.06);
+  transform: translateY(-2px);
+}
+
+.footer-link__icon {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.footer-link__label {
+  line-height: 1;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.footer-copy,
+.footer-made {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-made {
+  color: rgba(249,115,22,0.55);
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .footer-link { transition: none; }
+}
