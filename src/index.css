@@ -1,11 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-    @apply bg-deep-blue 
+:root {
+  /* Dark Mode (Default) */
+  --orange:        #f97316;
+  --orange-dark:   #c2410c;
+  --orange-glow:   rgba(249, 115, 22, 0.15);
+  --bg:            #070b12;
+  --surface:       rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-orange: rgba(249, 115, 22, 0.35);
+  --text-primary:  #f1f5f9;
+  --text-muted:    #94a3b8;
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --radius:        14px;
 }
+
+body.light-mode {
+  /* Light Mode */
+  --bg:            #f8fafc;
+  --surface:       rgba(0, 0, 0, 0.03);
+  --surface-hover: rgba(0, 0, 0, 0.07);
+  --border:        rgba(0, 0, 0, 0.08);
+  --text-primary:  #0f172a;
+  --text-muted:    #475569;
+  --orange-glow:   rgba(249, 115, 22, 0.1);
+  --border-orange: rgba(249, 115, 22, 0.5);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  margin: 0;
+}
+
 html, body {
   overflow-x: hidden;
-  
 }

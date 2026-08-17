@@ -1,19 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
 /* ─── CSS Variables ─────────────────────────────────────────────────────────── */
-:root {
-  --orange:        #f97316;
-  --orange-dark:   #c2410c;
-  --orange-glow:   rgba(249, 115, 22, 0.18);
-  --bg:            #070b12;
-  --surface:       rgba(255, 255, 255, 0.04);
-  --border:        rgba(255, 255, 255, 0.08);
-  --text-primary:  #f1f5f9;
-  --text-muted:    #94a3b8;
-  --font-display:  'Playfair Display', Georgia, serif;
-  --font-body:     'DM Sans', system-ui, sans-serif;
-  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
-}
+/* Global CSS variables are now located in index.css for Light/Dark mode support */
 
 /* ─── Section wrapper ───────────────────────────────────────────────────────── */
 .hero-section {
@@ -180,19 +168,24 @@
   background: linear-gradient(135deg, var(--orange), var(--orange-dark));
   color: #fff;
   box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
 }
 .btn--primary:hover {
   box-shadow: 0 10px 30px rgba(249,115,22,0.5);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .btn--ghost {
   background: var(--surface);
   color: var(--text-primary);
   border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s var(--ease-out), background 0.3s ease, border-color 0.3s ease;
 }
 .btn--ghost:hover {
-  border-color: rgba(249,115,22,0.4);
-  background: rgba(249,115,22,0.06);
+  border-color: var(--orange);
+  background: var(--orange-glow);
+  transform: translateY(-4px) scale(1.02);
 }
 
 /* ─── Stats row ─────────────────────────────────────────────────────────────── */
@@ -273,15 +266,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: morph 9s ease-in-out infinite;
+  animation: morph 9s ease-in-out infinite, float 6s ease-in-out infinite;
   box-shadow:
-    0 0 0 8px rgba(249,115,22,0.08),
-    0 0 60px rgba(249,115,22,0.2);
+    0 0 0 8px var(--orange-glow),
+    0 0 60px var(--orange-glow);
 }
 @keyframes morph {
   0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
   33%       { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
   66%       { border-radius: 63% 37% 44% 56% / 40% 63% 37% 60%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 /* Photo */
@@ -302,9 +299,9 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: rgba(10, 16, 26, 0.9);
-  border: 1px solid rgba(249,115,22,0.3);
-  backdrop-filter: blur(12px);
+  background: var(--bg);
+  border: 1px solid var(--border-orange);
+  backdrop-filter: blur(16px);
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 0.75rem;

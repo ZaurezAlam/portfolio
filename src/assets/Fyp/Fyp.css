@@ -1,21 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
 /* ─── Variables (mirrors Hero/Navbar palette) ───────────────────────────────── */
-:root {
-  --orange:       #f97316;
-  --orange-dark:  #c2410c;
-  --bg:           #070b12;
-  --surface:      rgba(255, 255, 255, 0.04);
-  --surface-hover:rgba(255, 255, 255, 0.07);
-  --border:       rgba(255, 255, 255, 0.08);
-  --border-orange:rgba(249, 115, 22, 0.35);
-  --text-primary: #f1f5f9;
-  --text-muted:   #94a3b8;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
-  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
-  --radius:       14px;
-}
+/* Global CSS variables are now located in index.css for Light/Dark mode support */
 
 /* ─── Section ───────────────────────────────────────────────────────────────── */
 .projects-section {
@@ -96,12 +82,13 @@
     0 0 0 1px rgba(249,115,22,0.05),
     0 20px 60px rgba(0,0,0,0.5),
     0 0 40px rgba(249,115,22,0.06);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 .fyp-card:hover {
+  transform: translateY(-8px);
   box-shadow:
     0 0 0 1px rgba(249,115,22,0.12),
-    0 24px 70px rgba(0,0,0,0.6),
+    0 24px 70px rgba(0,0,0,0.4),
     0 0 60px rgba(249,115,22,0.1);
 }
 
@@ -144,7 +131,7 @@
 .fyp-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7,11,18,0.6), transparent 50%);
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
   display: flex;
   align-items: flex-end;
   padding: 1rem;
@@ -291,11 +278,12 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 .project-card:hover {
   border-color: var(--border-orange);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 30px rgba(249,115,22,0.07);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 30px rgba(249,115,22,0.07);
 }
 
 .project-image-btn {
@@ -322,7 +310,7 @@
 .project-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7,11,18,0.5) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }

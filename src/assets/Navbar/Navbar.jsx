@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar, Toolbar, Typography, IconButton, Drawer, 
   Box, List, ListItem, ListItemButton, ListItemIcon, 
@@ -10,7 +10,9 @@ import {
   Phone as PhoneIcon,
   Email as EmailIcon,
   Menu as MenuIcon,
-  Description as CVIcon
+  Description as CVIcon,
+  LightMode as LightModeIcon,
+  DarkMode as DarkModeIcon
 } from '@mui/icons-material';
 import './Navbar.css';
 
@@ -25,6 +27,31 @@ export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  // Theme toggle logic
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      setIsLightMode(true);
+      document.body.classList.add('light-mode');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsLightMode((prev) => {
+      const newMode = !prev;
+      if (newMode) {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('theme', 'dark');
+      }
+      return newMode;
+    });
+  };
 
   const toggleDrawer = (open) => () => setDrawerOpen(open);
 
@@ -60,6 +87,13 @@ export const Navbar = () => {
                   {item.icon}
                 </IconButton>
               ))}
+              <IconButton
+                onClick={toggleTheme}
+                className="nav-icon-btn theme-toggle-btn"
+                aria-label="Toggle Theme"
+              >
+                {isLightMode ? <DarkModeIcon /> : <LightModeIcon />}
+              </IconButton>
               <Button
                 variant="contained"
                 href="/Zaurez_Alam_Khan_CV.pdf"
@@ -70,13 +104,27 @@ export const Navbar = () => {
               </Button>
             </Box>
           ) : (
-            <IconButton 
-              edge="start" 
-              color="inherit" 
-              onClick={toggleDrawer(true)}
-            >
-              <MenuIcon sx={{ fontSize: 32 }} />
-            </IconButton>
+            <Box className="mobile-nav-actions">
+              <IconButton
+                onClick={toggleTheme}
+                className="mobile-nav-btn"
+                aria-label="Toggle Theme"
+                disableRipple
+              >
+                {isLightMode ? <DarkModeIcon /> : <LightModeIcon />}
+              </IconButton>
+              <IconButton 
+                onClick={toggleDrawer(true)}
+                disableRipple
+                className="mobile-nav-btn"
+              >
+                <div className="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </IconButton>
+            </Box>
           )}
         </Toolbar>
       </AppBar>
@@ -88,7 +136,16 @@ export const Navbar = () => {
         onClose={toggleDrawer(false)}
         PaperProps={{ className: "drawer-paper" }}
       >
-        <Box sx={{ width: 280, pt: 4 }}>
+        <Box sx={{ width: 280, pt: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 3, mb: 2 }}>
+             <IconButton onClick={toggleDrawer(false)} className="mobile-nav-btn" disableRipple>
+                <div className="hamburger is-active">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+             </IconButton>
+          </Box>
           <List>
             {navLinks.map((item) => (
               <ListItem key={item.text} disablePadding>
@@ -104,7 +161,7 @@ export const Navbar = () => {
                 fullWidth
                 variant="contained"
                 href="/Zaurez_Alam_Khan_CV.pdf"
-                className="cv-button"
+                className="drawer-cv-button"
                 startIcon={<CVIcon />}
               >
                 Download CV

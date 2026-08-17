@@ -1,20 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
 /* ─── Variables ─────────────────────────────────────────────────────────────── */
-:root {
-  --orange:        #f97316;
-  --orange-dark:   #c2410c;
-  --bg:            #070b12;
-  --surface:       rgba(255, 255, 255, 0.04);
-  --border:        rgba(255, 255, 255, 0.08);
-  --border-orange: rgba(249, 115, 22, 0.3);
-  --text-primary:  #f1f5f9;
-  --text-muted:    #94a3b8;
-  --font-display:  'Playfair Display', Georgia, serif;
-  --font-body:     'DM Sans', system-ui, sans-serif;
-  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
-  --radius:        14px;
-}
+/* Global CSS variables are now located in index.css for Light/Dark mode support */
 
 /* ─── Section ───────────────────────────────────────────────────────────────── */
 .tools-section {
