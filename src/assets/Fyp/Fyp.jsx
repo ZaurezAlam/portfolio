@@ -4,6 +4,7 @@ import fypimg from '../../assets/images/fyp.png';
 import './Fyp.css';
 
 const projects = [
+  // ── FYP ──
   {
     id: 1,
     title: "Vehicle Smoke Detection System",
@@ -13,6 +14,54 @@ const projects = [
     github: "https://github.com/ZaurezAlam/smoke_veHicle_dashboard",
     tech: ["Python", "Computer Vision", "React", "Dashboard"],
     category: "fyp",
+  },
+
+  // ── Experience Projects (eOcean) ──
+  {
+    id: 6,
+    title: "Metabase BI System — eOcean",
+    description:
+      "Reverse-engineered undocumented database architecture and built the core Metabase reporting infrastructure over 65+ fragmented per-client MySQL OTP tables. Wrote dynamic stored procedures using information_schema-driven runtime schema discovery, handled zero-date values and column-name heterogeneity across clients, and worked around Metabase's inability to run dynamic SQL by passing a pipe-delimited client selector through CALL syntax.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    github: "#", // TODO: add repo link if you can share one (internal eOcean project)
+    tech: ["MySQL", "Metabase", "Stored Procedures", "SQL"],
+    category: "experience",
+  },
+  {
+    id: 7,
+    title: "Production TypeScript Feature — eOcean",
+    description:
+      "Shipped a TypeScript search feature into an existing production codebase, working through a full GitLab feature-branch and draft merge-request workflow targeting the production branch — from implementation to review to release.",
+    image:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2074&auto=format&fit=crop",
+    github: "#", // TODO: add repo link if you can share one (internal eOcean project)
+    tech: ["TypeScript", "React", "GitLab"],
+    category: "experience",
+  },
+
+  // ── Other Projects ──
+  {
+    id: 8,
+    title: "WhatsApp RAG Analytics Dashboard",
+    description:
+      "Full-stack RAG analytics system built on WhatsApp conversation data — FastAPI MVC backend, React/Vite frontend, PostgreSQL storage, HuggingFace embeddings, and Supabase pgvector for semantic search, orchestrated with n8n.",
+    image:
+      "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2070&auto=format&fit=crop",
+    github: "#", // TODO: add your repo link
+    tech: ["FastAPI", "React", "PostgreSQL", "pgvector", "n8n"],
+    category: "other",
+  },
+  {
+    id: 9,
+    title: "WhatsApp Group JID Finder & NOC Forwarder",
+    description:
+      "Node.js service built on whatsapp-web.js and Evolution API to discover WhatsApp group JIDs and automatically forward NOC status messages, listening for MESSAGES_UPSERT webhook events routed through n8n.",
+    image:
+      "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=2070&auto=format&fit=crop",
+    github: "#", // TODO: add your repo link
+    tech: ["Node.js", "whatsapp-web.js", "Evolution API", "n8n"],
+    category: "other",
   },
   {
     id: 2,
@@ -110,14 +159,73 @@ const TechPill = ({ label }) => (
 export default function Projects() {
   const [openModal, setOpenModal] = useState(null);
 
-  const fypProject    = projects.find((p) => p.category === "fyp");
-  const otherProjects = projects.filter((p) => p.category === "other");
-  const modalProject  = projects.find((p) => p.id === openModal);
+  const fypProject         = projects.find((p) => p.category === "fyp");
+  const experienceProjects = projects.filter((p) => p.category === "experience");
+  const otherProjects      = projects.filter((p) => p.category === "other");
+  const modalProject       = projects.find((p) => p.id === openModal);
 
   return (
     <section className="projects-section" id="projects">
       {/* Ambient glow */}
       <div className="projects-glow" aria-hidden="true" />
+
+      {/* ── Experience Projects ── */}
+      <SectionHeading label="Professional Work" title="Experience Projects" />
+
+      <motion.div
+        className="grid-wrapper"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        {experienceProjects.map((project) => (
+          <motion.div
+            key={project.id}
+            className="project-card"
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.25 }}
+          >
+            {/* Image */}
+            <button
+              className="project-image-btn"
+              onClick={() => setOpenModal(project.id)}
+              aria-label={`View ${project.title} screenshot`}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="project-image"
+              />
+              <div className="project-image-overlay" />
+            </button>
+
+            {/* Content */}
+            <div className="project-content">
+              <h3 className="project-card-title">{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+
+              <div className="project-pills">
+                {project.tech.map((t) => <TechPill key={t} label={t} />)}
+              </div>
+
+              <div className="project-actions">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-github btn-github--sm"
+                >
+                  <GitHubIcon />
+                  GitHub
+                  <ExternalIcon />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
 
       {/* ── FYP ── */}
       <SectionHeading label="Featured Work" title="Final Year Project" />
@@ -211,28 +319,30 @@ export default function Projects() {
                 {project.tech.map((t) => <TechPill key={t} label={t} />)}
               </div>
 
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-github btn-github--sm"
-              >
-                <GitHubIcon />
-                GitHub
-                <ExternalIcon />
-              </a>
-              {/* NEW: Conditional Live Button */}
-  {(project.title === "Portfolio" || project.title === "Purge Chemicals") && (
-    <a
-      href={project.title === "Portfolio" ? "https://zaurezportfolio.vercel.app/" : "https://purgechemicals.com/"}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="btn-live btn-live--sm"
-    >
-      <ExternalIcon />
-      Live Demo
-    </a>
-  )}
+              <div className="project-actions">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-github btn-github--sm"
+                >
+                  <GitHubIcon />
+                  GitHub
+                  <ExternalIcon />
+                </a>
+                {/* Conditional Live Button */}
+                {(project.title === "Portfolio" || project.title === "Purge Chemicals") && (
+                  <a
+                    href={project.title === "Portfolio" ? "https://zaurezportfolio.vercel.app/" : "https://purgechemicals.com/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-live btn-live--sm"
+                  >
+                    <ExternalIcon />
+                    Live Demo
+                  </a>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}

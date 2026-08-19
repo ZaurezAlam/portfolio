@@ -430,8 +430,15 @@
 /* Container for buttons to sit side-by-side */
 .project-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: auto; /* Pushes buttons to the bottom of the card */
+}
+.project-actions .btn-github,
+.project-actions .btn-live {
+  flex: 1 1 auto;
+  justify-content: center;
+  min-width: 0;
 }
 
 /* Live Demo Button Styling */
@@ -451,7 +458,6 @@
   padding: 8px 16px;
   border-radius: 8px;
   transition: all 0.25s var(--ease-out);
-  width:120px;
 }
 
 .btn-live:hover {
@@ -466,4 +472,3 @@
   font-size: 0.7rem;
   padding: 7px 12px;
 }
-

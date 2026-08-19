@@ -13,6 +13,16 @@ import yolo      from '../../assets/Logos/yolo.png';
 import shopify   from '../../assets/Logos/shopify.png';
 import wordpress from '../../assets/Logos/wordpress.png';
 import hostinger from '../../assets/Logos/hostinger.png';
+import postgresql from '../../assets/Logos/postgresql.png';
+import mysql      from '../../assets/Logos/mysql.png';
+import supabase   from '../../assets/Logos/supabase.png';
+import fastapi   from '../../assets/Logos/FastAPI.png';
+import n8n        from '../../assets/Logos/n8n.png';
+import groq       from '../../assets/Logos/groq.png';
+import gemini     from '../../assets/Logos/gemini.png';
+import zapier     from '../../assets/Logos/zapier.png';
+import slack      from '../../assets/Logos/slack.png';
+import hubspot    from '../../assets/Logos/hubspot.png';
 import './Tools.css';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -31,9 +41,29 @@ const CATEGORIES = [
   {
     label: 'Backend & ML',
     tools: [
-      { name: 'Python',  src: python  },
-      { name: 'Django',  src: django  },
-      { name: 'YOLO',    src: yolo    },
+      { name: 'Python',   src: python  },
+      { name: 'Django',   src: django  },
+      { name: 'FastAPI',  src: fastapi }, // TODO: swap in fastapi logo import above
+      { name: 'YOLO',     src: yolo    },
+    ],
+  },
+  {
+    label: 'Databases',
+    tools: [
+      { name: 'PostgreSQL', src: postgresql }, // TODO: swap in postgresql logo import above
+      { name: 'MySQL',      src: mysql      }, // TODO: swap in mysql logo import above
+      { name: 'Supabase',   src: supabase   }, // vector DB / embeddings
+    ],
+  },
+  {
+    label: 'AI & Automation',
+    tools: [
+      { name: 'n8n',      src: n8n }, // TODO: swap in n8n logo import above
+      { name: 'Groq',     src: groq }, // TODO: swap in groq logo import above
+      { name: 'Gemini',   src: gemini }, // TODO: swap in gemini logo import above
+      { name: 'Zapier',   src: zapier }, // TODO: swap in zapier logo import above
+      { name: 'Slack',    src: slack }, // TODO: swap in slack logo import above
+      { name: 'HubSpot',  src: hubspot }, // TODO: swap in hubspot logo import above
     ],
   },
   {
@@ -42,7 +72,7 @@ const CATEGORIES = [
       { name: 'Shopify',    src: shopify   },
       { name: 'WordPress',  src: wordpress },
       { name: 'Hostinger',  src: hostinger },
-      { name: 'Vercel',  src: vercel  },
+      { name: 'Vercel',     src: vercel    },
     ],
   },
 ];
@@ -68,7 +98,13 @@ const ToolChip = ({ name, src }) => (
     transition={{ duration: 0.22 }}
   >
     <div className="tool-chip__icon">
-      <img src={src} alt={name} className="tool-img" />
+      {src ? (
+        <img src={src} alt={name} className="tool-img" />
+      ) : (
+        <span className="tool-img tool-img--fallback">
+          {name.slice(0, 2).toUpperCase()}
+        </span>
+      )}
     </div>
     <span className="tool-chip__name">{name}</span>
   </motion.div>

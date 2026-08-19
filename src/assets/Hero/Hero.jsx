@@ -5,10 +5,10 @@ import './Hero.css';
 
 // Typing animation hook
 const PHRASES = [
+  'AI automation pipelines.',
+  'BI dashboards from messy data.',
+  'WhatsApp + n8n workflows.',
   'scalable e-commerce solutions.',
-  'high-performance web apps.',
-  'custom Shopify experiences.',
-  'technical SEO systems.',
 ];
 
 const useTypingEffect = (phrases, speed = 60, pause = 1800, deleteSpeed = 35) => {
@@ -82,7 +82,7 @@ export const Hero = () => {
           </motion.h1>
 
           <motion.p className="hero-description" variants={itemVariants}>
-           Results-driven Frontend Developer with foundational experience in building responsive and user-centric web applications using React and modern JavaScript. Skilled in working with Shopify, WordPress, and CMS platforms to develop and deploy scalable websites. Proficient in translating Figma designs into functional interfaces, with a focus on performance optimization and implementing technical SEO best practices.
+            AI Automation Engineer with hands-on experience shipping production systems at a Karachi-based CPaaS company — reverse-engineering undocumented database architecture into dynamic Metabase BI dashboards, building WhatsApp and n8n-based automation pipelines, and shipping TypeScript features straight to production. I combine that automation-engineering depth with a full-stack, e-commerce background in React, Shopify, and WordPress to design systems that actually get used.
           </motion.p>
 
           <motion.div className="hero-actions" variants={itemVariants}>
@@ -95,9 +95,9 @@ export const Hero = () => {
               Explore Projects
             </motion.a>
            <motion.a
-  href="https://wa.me/923358273980" // Removed the 't' and kept it clean
-  target="_blank" // Essential: Opens WhatsApp in a new tab so they don't leave your site
-  rel="noopener noreferrer" // Security best practice for target="_blank"
+  href="https://wa.me/923358273980"
+  target="_blank"
+  rel="noopener noreferrer"
   className="btn btn--ghost"
   whileHover={{ scale: 1.04, y: -2 }}
   whileTap={{ scale: 0.97 }}
@@ -109,8 +109,8 @@ export const Hero = () => {
           {/* Stats row */}
           <motion.div className="hero-stats" variants={itemVariants}>
             {[
-              { value: '0.5',  label: 'Years Experience' },
-              { value: '10+', label: 'Projects Shipped' },
+              { value: '1',  label: 'Years Experience' },
+              { value: '20+', label: 'Projects Shipped' },
             ].map(({ value, label }) => (
               <div className="hero-stat" key={label}>
                 <span className="hero-stat__value">{value}</span>
@@ -134,7 +134,7 @@ export const Hero = () => {
           <div className="hero-blob">
             <img
               src={myImage}
-              alt="Zaurez Alam — Full-Stack Developer"
+              alt="Zaurez Alam — AI Automation Engineer"
               className="hero-photo"
             />
           </div>
@@ -146,7 +146,7 @@ export const Hero = () => {
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           >
             <span className="hero-badge__dot" />
-            Available for Work
+            Working at eOcean
           </motion.div>
         </motion.div>
 

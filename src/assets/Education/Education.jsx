@@ -2,13 +2,38 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import dsu    from '../../assets/Logos/dsu.png';
 import aptech from '../../assets/Logos/aptech.png';
+// TODO: import your eOcean and Purge Chemicals logos once you have them, e.g.:
+import eocean from '../../assets/Logos/eocean.png';
+import purge  from '../../assets/Logos/purge.png';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon   from '@mui/icons-material/GitHub';
 import PhoneIcon    from '@mui/icons-material/Phone';
 import EmailIcon    from '@mui/icons-material/Email';
+import WorkIcon     from '@mui/icons-material/WorkOutline';
 import './Education.css';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
+const EXPERIENCE = [
+  {
+    logo:   eocean, // TODO: swap in eocean logo import above
+    logoAlt:'eOcean',
+    org:    'eOcean',
+    role:   'AI Automation & Data Engineering',
+    period: 'May 2026 – Aug 2026', // TODO: confirm exact dates
+    type:   'work',
+    blurb:  'Built Metabase BI dashboards over fragmented MySQL schemas, reverse-engineered undocumented database architecture, shipped a TypeScript feature to production, and built WhatsApp + n8n automation pipelines.',
+  },
+  {
+    logo:   purge, // TODO: swap in purge chemicals logo import above
+    logoAlt:'Purge Chemicals',
+    org:    'Purge Chemicals',
+    role:   'Freelance Shopify Developer',
+    period: 'Nov 2025 – May 2026', // TODO: confirm exact dates
+    type:   'freelance',
+    blurb:  'Built and deployed a live Shopify store, migrating 100+ products and customizing the theme end-to-end.',
+  },
+];
+
 const EDUCATION = [
   {
     logo:   dsu,
@@ -64,6 +89,77 @@ const cardVariants = {
 export default function Education() {
   return (
     <>
+      {/* ══ Experience Section ═════════════════════════════════════════════════ */}
+      <section className="edu-section" id="experience">
+        <div className="edu-glow" aria-hidden="true" />
+
+        {/* Heading */}
+        <motion.div
+          className="edu-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="edu-eyebrow">Background</span>
+          <h2 className="edu-title">Experience</h2>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="edu-list">
+          {EXPERIENCE.map((item, i) => (
+            <motion.div
+              key={item.org}
+              className="edu-card"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ delay: i * 0.12 }}
+            >
+              {/* Logo */}
+              <div className="edu-logo-wrap">
+                {item.logo ? (
+                  <img
+                    src={item.logo}
+                    alt={item.logoAlt}
+                    className="edu-logo"
+                  />
+                ) : (
+                  <WorkIcon sx={{ fontSize: 22, opacity: 0.6 }} />
+                )}
+              </div>
+
+              {/* Connector line (hidden on last item) */}
+              {i < EXPERIENCE.length - 1 && (
+                <div className="edu-connector" aria-hidden="true" />
+              )}
+
+              {/* Content */}
+              <div className="edu-card__body">
+                <div className="edu-card__top">
+                  <div>
+                    <span className={`edu-badge ${item.type === 'freelance' ? 'edu-badge--cert' : ''}`}>
+                      {item.type === 'freelance' ? 'Freelance' : 'Experience'}
+                    </span>
+                    <h3 className="edu-school">{item.org}</h3>
+                    <p className="edu-degree">{item.role}</p>
+                    {item.blurb && (
+                      <p className="edu-degree" style={{ opacity: 0.75, marginTop: 4 }}>
+                        {item.blurb}
+                      </p>
+                    )}
+                  </div>
+                  {item.period && (
+                    <span className="edu-period">{item.period}</span>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* ══ Education Section ══════════════════════════════════════════════════ */}
       <section className="edu-section" id="education">
         <div className="edu-glow" aria-hidden="true" />
@@ -141,7 +237,7 @@ export default function Education() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="footer-name">Zaurez Alam</span>
-            <span className="footer-role">FrontEnd/CMS Developer</span>
+            <span className="footer-role">AI Automation Engineer</span>
           </motion.div>
 
           {/* Socials */}
