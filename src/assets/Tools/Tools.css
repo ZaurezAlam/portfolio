@@ -6,7 +6,9 @@
 /* ─── Section ───────────────────────────────────────────────────────────────── */
 .tools-section {
   position: relative;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(249, 115, 22, 0.08), transparent 26%),
+    var(--bg);
   padding: 5rem 1.25rem 6rem;
   overflow: hidden;
 }
@@ -127,17 +129,17 @@
   align-items: center;
   gap: 0.6rem;
   padding: 1.1rem 0.75rem 0.9rem;
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: default;
-  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-  /* no overflow hidden — let the hover lift show cleanly */
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .tool-chip:hover {
   border-color: var(--border-orange);
   background: rgba(249, 115, 22, 0.05);
+  transform: translateY(-4px);
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.35),
     0 0 20px rgba(249, 115, 22, 0.08);

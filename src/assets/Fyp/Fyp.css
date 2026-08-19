@@ -6,7 +6,9 @@
 /* ─── Section ───────────────────────────────────────────────────────────────── */
 .projects-section {
   position: relative;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 90% 15%, rgba(249, 115, 22, 0.08), transparent 20%),
+    var(--bg);
   padding: 5rem 1.25rem 6rem;
   overflow: hidden;
 }
@@ -74,22 +76,23 @@
 .fyp-card {
   display: flex;
   flex-direction: column;
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border: 1px solid var(--border-orange);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow:
     0 0 0 1px rgba(249,115,22,0.05),
-    0 20px 60px rgba(0,0,0,0.5),
-    0 0 40px rgba(249,115,22,0.06);
-  transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 45px rgba(249,115,22,0.08);
+  transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out), border-color 0.4s ease;
 }
 .fyp-card:hover {
   transform: translateY(-8px);
+  border-color: rgba(249,115,22,0.45);
   box-shadow:
     0 0 0 1px rgba(249,115,22,0.12),
-    0 24px 70px rgba(0,0,0,0.4),
-    0 0 60px rgba(249,115,22,0.1);
+    0 24px 70px rgba(0,0,0,0.38),
+    0 0 60px rgba(249,115,22,0.12);
 }
 
 @media (min-width: 768px) {
@@ -272,7 +275,7 @@
 
 /* ─── Project card ──────────────────────────────────────────────────────────── */
 .project-card {
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -283,7 +286,7 @@
 .project-card:hover {
   border-color: var(--border-orange);
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 30px rgba(249,115,22,0.07);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.24), 0 0 30px rgba(249,115,22,0.08);
 }
 
 .project-image-btn {

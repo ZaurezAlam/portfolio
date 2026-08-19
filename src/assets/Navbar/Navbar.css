@@ -61,19 +61,36 @@
   width: 40px !important;
   height: 40px !important;
   border-radius: 10px !important;
-  background: color-mix(in srgb, var(--surface) 50%, transparent) !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.30)) !important;
   border: 1px solid var(--border) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   color: var(--text-primary) !important;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.28);
   transition: all 0.25s ease-in-out !important;
   backdrop-filter: blur(8px);
 }
+
+body.light-mode .mobile-nav-btn {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)) !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
 .mobile-nav-btn:hover {
-  background: var(--orange-glow) !important;
-  border-color: rgba(249, 115, 22, 0.4) !important;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(15, 23, 42, 0.40)) !important;
+  border-color: rgba(249, 115, 22, 0.45) !important;
   color: var(--orange) !important;
+  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.12);
+}
+
+body.light-mode .mobile-nav-btn:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(255,255,255,0.8)) !important;
+}
+
+.mobile-nav-btn:hover .hamburger span,
+.mobile-nav-btn .hamburger span {
+  background-color: var(--text-primary);
 }
 
 .mobile-nav-btn:hover .hamburger span {
@@ -101,12 +118,69 @@
 
 /* Drawer Styling */
 .drawer-paper {
-  background-color: color-mix(in srgb, var(--bg) 85%, transparent) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 92%, transparent), color-mix(in srgb, var(--bg) 82%, transparent)) !important;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   color: var(--text-primary) !important;
   border-left: 1px solid var(--border);
-  transition: background-color 0.4s ease, color 0.4s ease;
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.35);
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden !important;
+  scrollbar-width: thin;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.35s var(--ease-out), opacity 0.35s ease;
+}
+
+.drawer-inner {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+}
+
+.drawer-inner::-webkit-scrollbar {
+  width: 6px;
+}
+
+.drawer-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-inner::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(249,115,22,0.8), rgba(249,115,22,0.35));
+  border-radius: 999px;
+}
+
+.drawer-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem;
+  background: linear-gradient(180deg, rgba(7,11,18,0.94), rgba(7,11,18,0.74) 65%, transparent);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+body.light-mode .drawer-header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.8) 65%, transparent);
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+.drawer-brand {
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-size: 1.05rem;
+}
+
+.drawer-list {
+  padding: 0.5rem 0 0.75rem !important;
 }
 
 /* Animated Hamburger */
@@ -139,21 +213,42 @@
 }
 
 .drawer-item {
-  background: var(--surface) !important;
+  background: linear-gradient(135deg, rgba(15,23,42,0.56), rgba(15,23,42,0.28)) !important;
   border: 1px solid var(--border) !important;
   backdrop-filter: blur(8px);
   border-radius: 12px !important;
   margin: 10px 16px !important;
   padding: 8px 16px !important;
   transition: all 0.3s var(--ease-out) !important;
+  animation: drawer-item-enter 0.45s var(--ease-out) both;
+}
+
+body.light-mode .drawer-item {
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.45)) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.drawer-item:nth-of-type(2) { animation-delay: 0.06s; }
+.drawer-item:nth-of-type(3) { animation-delay: 0.12s; }
+.drawer-item:nth-of-type(4) { animation-delay: 0.18s; }
+
+@keyframes drawer-item-enter {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .drawer-item:hover {
-  background-color: var(--orange-glow) !important;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.10), rgba(255,255,255,0.04)) !important;
   border-color: rgba(249, 115, 22, 0.4) !important;
   color: var(--orange) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
+  transform: translateY(-2px) translateX(2px);
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.14);
 }
 
 .drawer-icon {
@@ -167,7 +262,15 @@
 }
 
 .drawer-footer {
-  padding: 1.5rem 1rem;
+  position: sticky;
+  bottom: 0;
+  padding: 1rem 1rem 1.5rem;
+  background: linear-gradient(180deg, transparent, rgba(7,11,18,0.7) 35%, rgba(7,11,18,0.96) 100%);
+  backdrop-filter: blur(12px);
+}
+
+body.light-mode .drawer-footer {
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.9) 35%, rgba(248,250,252,0.95) 100%);
 }
 
 .drawer-cv-button {
@@ -186,6 +289,21 @@
 
 .drawer-cv-button:hover {
   background: linear-gradient(135deg, rgba(249,115,22,1), rgba(194,65,12,1)) !important;
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.01);
   box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4) !important;
+}
+
+@media (max-width: 600px) {
+  .drawer-paper {
+    width: 86vw !important;
+  }
+
+  .drawer-header {
+    padding-top: 0.9rem;
+  }
+
+  .drawer-item {
+    margin: 8px 12px !important;
+    padding: 7px 12px !important;
+  }
 }
